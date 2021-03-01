@@ -1,7 +1,5 @@
 ﻿using Business.Concrete;
 using DataAccess.Concrete.EntityFramework;
-using DataAccess.Concrete.InMemory;
-using Entities.Concrete;
 using System;
 
 //KOD YAZARKEN DÜŞÜN!!!!
@@ -19,15 +17,14 @@ namespace ConsoleUI
             //KOD YAZARKEN DÜŞÜN!!!!
             //KOD YAZARKEN DÜŞÜN!!!!
 
-
             CarManager carManager = new CarManager(new EfCarDal());
             // BrandManager brandManager = new BrandManager(new EfBrandDal());
             //ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.Description);
-            }
+            //foreach (var car in carManager.GetAll())
+            //{
+            //    Console.WriteLine(car.Description);
+            //}
 
             //var car = new Car { Id = 3, BrandId = 1, ColorId = 1, ModelYear = 2020, DailyPrice = 0, Description = "yeni araba", Name = "a" };
             //carManager.Add(car);
@@ -98,24 +95,35 @@ namespace ConsoleUI
             //var color = colorManager.GetById(3);
             //colorManager.Delete(color);
             //Console.WriteLine("color silindi");
+
+            CarTest();
         }
 
-        private static void InMemoryGetTest(CarManager carManager)
-        {
-            var carId = carManager.GetById(2);
-            Console.WriteLine(carId.Description);
-        }
+        //private static void InMemoryGetTest(CarManager carManager)
+        //{
+        //    var carId = carManager.GetById(2);
+        //    Console.WriteLine(carId.Description);
+        //}
 
-        private static CarManager InMemoryDalGetAllTest()
-        {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+        //private static CarManager InMemoryDalGetAllTest()
+        //{
+        //    CarManager carManager = new CarManager(new InMemoryCarDal());
 
-            foreach (var car in carManager.GetAll())
+        //    foreach (var car in carManager.GetAll())
+        //    {
+        //        Console.WriteLine(car.BrandId);
+        //    }
+
+        //    return carManager;
+        //}
+
+        private static void CarTest()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car  in carManager.GetCarDetails())
             {
-                Console.WriteLine(car.BrandId);
+                Console.WriteLine(car.CarName + " " + car.CarId + " " + car.ColorName);
             }
-
-            return carManager;
         }
     }
 }

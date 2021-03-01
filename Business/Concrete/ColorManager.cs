@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System.Collections.Generic;
 
 namespace Business.Concrete
@@ -31,7 +32,7 @@ namespace Business.Concrete
 
         public Color GetById(int id)
         {
-            return _colorDal.Get(c=> c.ColorId == id);
+            return _colorDal.Get(c => c.ColorId == id);
         }
 
         public void Update(Color color)
